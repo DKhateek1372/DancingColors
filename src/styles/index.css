@@ -3,8 +3,8 @@ width: 100%;
 }
 
 .width50{
-    width: 100%;
-    }
+    width: 50%;
+}
 .centerAlign{
 text-align: center;
 }
@@ -259,6 +259,9 @@ color: white;
     margin: 0 auto;
 }
 
+.marginBtn{
+    margin: 0rem 0rem 0 5rem;
+}
 
 .searchBooks{
     padding: 1rem 3rem;
@@ -297,6 +300,7 @@ color: white;
 .colorPreview{
     width: 100px;
     height: 100px;
+    margin: 0 auto;
 }
 
 

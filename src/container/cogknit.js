@@ -11,24 +11,18 @@ import 'antd/dist/antd.css'
 const colorCombo = (props) => {
 
   const [search, setSearchState] = React.useState('');
-
   const [color, setColor ] = React.useState(null);
   const [colorBucket, setColorBucket] = React.useState([]);
 
-  let { searchText } = search;
-
   const bookSearchHandler = (e) => {
-    console.log("@76438753678453",e.target.value); 
     setSearchState(e.target.value);
   }
 
   const generateColor = () => {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
     let colorList = [];
     for (var i = 0; i < search; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-      colorList.push(color);
+      var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+      colorList.push(randomColor);
       setColorBucket(colorList);
     }
   };
@@ -38,6 +32,7 @@ const colorCombo = (props) => {
   }
 
   const clearAll = () =>{
+    setSearchState(null);
     setColorBucket([]);
   }
 
@@ -49,16 +44,14 @@ const colorCombo = (props) => {
             <h1 className="text-3xl">Cogknit Task</h1>{' '}
             <hr className="border mtl-6"></hr>
           </Col>
-          <Col lg={12} md={12} className="p-4 inFlex parent marginBooks" >
+          <Col lg={12} md={12} className="p-4 flex parent marginBooks" >
             <Col lg={6} md={6} className="width50">
               <h1 className="text-3xl">Palette</h1>{' '}
-              <div className="parent">
+              <div className="parent flex">
                 {
                   colorBucket.length> 0 ? 
                   colorBucket.map((color, index) =>(
-                    <div className="colorList" onClick={()=> selectedColor(color)}>
-                      {color}
-                    </div>
+                    <div key={index} className="colorList" onClick={()=> selectedColor(color)} style={{backgroundColor: `${color}`}}></div>
                   )):
                   (
                     <Col lg={12} md={12} className="p-4 inFlex parent marginAuto" >
@@ -70,14 +63,12 @@ const colorCombo = (props) => {
             </Col>
             <Col lg={6} md={6} className="width50">
               <Col lg={12} md={12}>
-                <Searchbar bookSearchHandler={bookSearchHandler} searchBar={searchText} />
-                <button className="btn_Button btnPreview" onClick={() => generateColor()}>Preview</button>{' '}
-                <button className="btn_Button btnBorrow" onClick={() => clearAll()}>Borrow</button>{' '}
+                <Searchbar bookSearchHandler={bookSearchHandler} searchBar={search} generateColor={generateColor} clearAll={clearAll}/>
+               
               </Col>
               <Col lg={12} md={12}>
                 <h1 className="text-3xl">Selected Color</h1>{' '}
-                <div className="colorPreview">
-                  {color}
+                <div className="colorPreview" style={{backgroundColor: `${color}`}}>
                 </div>
               </Col>
             </Col>
