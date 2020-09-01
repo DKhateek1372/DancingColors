@@ -10,9 +10,7 @@ import 'antd/dist/antd.css'
 
 const colorCombo = (props) => {
 
-  const [search, setSearchState] = React.useState({
-    searchText: "",
-  });
+  const [search, setSearchState] = React.useState('');
 
   const [color, setColor ] = React.useState(null);
   const [colorBucket, setColorBucket] = React.useState([]);
@@ -20,6 +18,7 @@ const colorCombo = (props) => {
   let { searchText } = search;
 
   const bookSearchHandler = (e) => {
+    console.log("@76438753678453",e.target.value); 
     setSearchState(e.target.value);
   }
 
@@ -27,16 +26,12 @@ const colorCombo = (props) => {
     var letters = '0123456789ABCDEF';
     var color = '#';
     let colorList = [];
-    for (var i = 0; i < searchText.length; i++) {
+    for (var i = 0; i < search; i++) {
       color += letters[Math.floor(Math.random() * 16)];
       colorList.push(color);
       setColorBucket(colorList);
     }
   };
-
-  useEffect(() => {
-    generateColor();
-  }, []);
 
   const selectedColor = (color) =>{
     setColor(color);
