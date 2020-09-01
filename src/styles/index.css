@@ -285,6 +285,20 @@ color: white;
     display: flex;
 }
 
+.colorList{
+    border: 1px solid #e5e5e5;
+    margin: 0.5rem 0 0.5rem 2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    flex: 1 0 15%;
+    display: flex;
+}
+
+.colorPreview{
+    width: 100px;
+    height: 100px;
+}
+
 
 .btn-cart {
         color: #fff !important;
@@ -297,6 +311,7 @@ color: white;
     background-color: #ffc107 !important;
     border-color: #ffc107 !important;
 }
+
 
 .btnPreview{
     color: #fff !important;
@@ -320,4 +335,8 @@ color: white;
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.colorList{
+
 }
